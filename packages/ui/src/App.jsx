@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreProvider } from "./lib/store/provider";
+import { increment } from "./lib/store/slices/counterSlice";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <div>
       <div>{count}</div>
       <div>
-        <button onClick={() => setCount((c) => c + 1)}>increment</button>
+        <button onClick={() => dispatch(increment())}>increment</button>
       </div>
     </div>
   );
 };
 
-export default App;
+const MainApp = () => {
+  return (
+    <StoreProvider>
+      <App />
+    </StoreProvider>
+  );
+};
+
+export default MainApp;

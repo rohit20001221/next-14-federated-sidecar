@@ -37,6 +37,7 @@ module.exports = {
       remotes: {},
       exposes: {
         "./App": "./src/App.jsx",
+        "./Store": "./src/lib/store/store.js",
       },
       shared: {
         react: {
