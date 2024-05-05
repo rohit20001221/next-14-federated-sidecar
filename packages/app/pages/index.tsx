@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { isError, isReady, mod } = useRemoteModule({
-    url: "http://localhost:3001/remoteEntry.js",
+    url: "http://localhost:3000/__federated/remoteEntry.js",
     scope: "ui",
     module: "./Store",
   });
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div>
       <RemoteComponent
-        url="http://localhost:3001/remoteEntry.js"
+        url="http://localhost:3000/__federated/remoteEntry.js"
         scope="ui"
         module="./App"
       />

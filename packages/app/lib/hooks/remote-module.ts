@@ -18,7 +18,7 @@ export const useRemoteModule = (props: {
     if (!isReady || isError) return;
 
     loadRemoteScript({ module, scope }).then((m) => setMod(m));
-  }, [isReady, isError]);
+  }, [isReady, isError, module, scope]);
 
   return {
     isReady,
