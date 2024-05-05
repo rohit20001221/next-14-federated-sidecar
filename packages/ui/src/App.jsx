@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+import router from "./lib/router";
 import { StoreProvider } from "./lib/store/provider";
 import { increment } from "./lib/store/slices/counterSlice";
 
@@ -20,6 +22,7 @@ const MainApp = () => {
   return (
     <StoreProvider>
       <App />
+      <RouterProvider router={router} />
     </StoreProvider>
   );
 };
