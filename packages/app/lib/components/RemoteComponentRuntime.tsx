@@ -6,6 +6,7 @@ const RemoteComponentRuntime: FC<RemoteContainerRuntimeProps> = ({
   url,
   scope,
   module,
+  type,
 }) => {
   const [isClient, setIsClient] = useState(false);
 
@@ -25,6 +26,7 @@ const RemoteComponentRuntime: FC<RemoteContainerRuntimeProps> = ({
               name: scope,
               alias: scope,
               shareScope: "default",
+              type,
             },
           ],
           { force: true }
@@ -54,4 +56,5 @@ type RemoteContainerRuntimeProps = {
   url: string;
   scope: string;
   module: string;
+  type?: "global" | "esm";
 };

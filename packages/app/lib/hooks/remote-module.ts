@@ -6,8 +6,9 @@ export const useRemoteModule = (props: {
   url: string;
   module: string;
   scope: string;
+  type?: "global" | "esm";
 }) => {
-  const { module, scope, url } = props;
+  const { module, scope, url, type } = props;
 
   const [isClient, setIsClient] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -35,6 +36,7 @@ export const useRemoteModule = (props: {
               entry: url,
               name: scope,
               shareScope: "default",
+              type,
             },
           ],
           { force: true }

@@ -16,9 +16,10 @@ export default function Home() {
   return (
     <div>
       <RemoteComponentRuntime
-        url="http://localhost:3000/remoteEntry.js"
-        scope="ui"
+        url="http://localhost:3002/assets/remoteEntry.js"
+        scope="app_vite"
         module="App"
+        type="esm"
       />
     </div>
   );
