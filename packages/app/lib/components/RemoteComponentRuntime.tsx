@@ -16,19 +16,22 @@ const RemoteComponentRuntime: FC<RemoteContainerRuntimeProps> = ({
   if (!isClient) return null;
 
   const Component = lazy(async () => {
-    try {
-      federation.registerRemotes(
-        [
-          {
-            entry: url,
-            name: scope,
-            shareScope: "default",
-          },
-        ],
-        { force: true }
-      );
-    } catch {
-      return { default: () => null };
+    if (!federation.moduleCache.has(scope)) {
+      try {
+        federation.registerRemotes(
+          [
+            {
+              entry: url,
+              name: scope,
+              alias: scope,
+              shareScope: "default",
+            },
+          ],
+          { force: true }
+        );
+      } catch (e) {
+        return { default: () => <div>{(e as Error).message}</div> };
+      }
     }
 
     const m = (await federation.loadRemote(`${scope}/${module}`)) as {
