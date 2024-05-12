@@ -6,7 +6,6 @@ export const useDynamicScript = (props: { url: string }) => {
 
   const [isReady, setIsReady] = useState(false);
   const [isError, setIsError] = useState(false);
-
   useEffect(() => {
     if (url === "") return;
 
